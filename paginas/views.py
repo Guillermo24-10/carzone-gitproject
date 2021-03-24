@@ -1,12 +1,20 @@
 from django.shortcuts import render
-
+from .models import Equipo
 # Create your views here.
 
 def home(request):
-    return render(request, 'paginas/home.html')
+    equipo = Equipo.objects.all()
+    data = {
+        'equipo':equipo,
+    }
+    return render(request, 'paginas/home.html', data)
 
 def about(request):
-    return render(request, 'paginas/about.html')
+    equipo = Equipo.objects.all()
+    data = {
+        'equipo':equipo,
+    }
+    return render(request, 'paginas/about.html', data)
 
 def servicios(request):
     return render(request, 'paginas/servicios.html')
