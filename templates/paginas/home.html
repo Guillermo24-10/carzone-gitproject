@@ -39,52 +39,41 @@
         </div>
         <!-- Search box 3 start -->
         <div class="search-box-4 sb-8">
-            <form action="#" method="">
+            <form action="{% url 'search' %}" method="">
                 <div class="form-group">
                     <input type="text" name="keyword" placeholder="Buscar por nombre" class="form-control">
                 </div>
+
                 <div class="form-group">
-                    <select class="form-control search-fields" name="select-brand">
-                        <option selected="true" disabled="disabled">Marca</option>
-                        <option>Audi</option>
-                        <option>BMW</option>
-                        <option>Honda</option>
-                        <option>Nissan</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control search-fields" name="select-make">
+                    <select class="form-control search-fields" name="modelo">
                         <option selected="true" disabled="disabled">Modelo</option>
-                        <option>BMW</option>
-                        <option>Honda</option>
-                        <option>Lamborghini Huracán</option>
-                        <option>Sports Car</option>
+                        {% for s in modelo_search %}
+                              <option value="{{s}}">{{s}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
-                    <select class="form-control search-fields" name="select-location">
+                    <select class="form-control search-fields" name="ciudad">
                         <option selected="true" disabled="disabled">Localización</option>
-                        <option>United States</option>
-                        <option>United Kingdom</option>
+                        {% for s in ciudad_search %}
+                              <option value="{{s}}">{{s}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
-                    <select class="form-control search-fields" name="select-year">
+                    <select class="form-control search-fields" name="year">
                         <option selected="true" disabled="disabled">Año</option>
-                        <option>2016</option>
-                        <option>2017</option>
-                        <option>2018</option>
-                        <option>2019</option>
+                        {% for s in year_search %}
+                              <option value="{{s}}">{{s}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="form-group">
-                    <select class="form-control search-fields" name="select-type">
+                    <select class="form-control search-fields" name="estilo">
                         <option selected="true" disabled="disabled">Seleccione el tipo de coche</option>
-                        <option>Sedan</option>
-                        <option>Sports</option>
-                        <option>Hatchback</option>
-                        <option>Pickup Truck</option>
-                        <option>SUV</option>
+                        {% for s in cuerpo_search %}
+                              <option value="{{s}}">{{s}}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <div class="range-slider clearfix">
@@ -132,7 +121,7 @@
                 <div class="slick-slide-item">
                     <div class="car-box-3">
                         <div class="car-thumbnail">
-                            <a href="car-details.html" class="car-img">
+                            <a href="{% url 'car_detalle' c.id %}" class="car-img">
                                 <div class="tag-2">Destacado</div>
                                 <div class="price-box">
                                     <span>${{c.precio | intcomma}}</span>
@@ -174,10 +163,10 @@
                         </div>
                         <div class="detail">
                             <h1 class="title">
-                                <a href="car-details.html">{{c.car_tittle}}</a>
+                                <a href="{% url 'car_detalle' c.id %}">{{c.car_tittle}}</a>
                             </h1>
                             <div class="location">
-                                <a href="car-details.html">
+                                <a href="{% url 'car_detalle' c.id %}">
                                     <i class="flaticon-pin"></i>{{c.estado}}, {{c.ciudad}},
                                 </a>
                             </div>
@@ -222,7 +211,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="car-box">
                     <div class="car-thumbnail">
-                        <a href="car-details.html" class="car-img">
+                        <a href="{% url 'car_detalle' c.id %}" class="car-img">
                             <div class="tag">For Sale</div>
                             <img class="d-block w-100" src="{{c.foto.url}}" alt="car" style="min-height:262px; max_height: 262px;">
                             <div class="facilities-list clearfix">
@@ -274,10 +263,10 @@
                     </div>
                     <div class="detail">
                         <h1 class="title">
-                            <a href="car-details.html">{{c.car_tittle}}</a>
+                            <a href="{% url 'car_detalle' c.id %}">{{c.car_tittle}}</a>
                         </h1>
                         <div class="location">
-                            <a href="car-details.html">
+                            <a href="{% url 'car_detalle' c.id %}">
                                 <i class="flaticon-pin"></i>{{c.estado}}, {{c.ciudad}}
                             </a>
                         </div>
@@ -358,13 +347,7 @@
 
 
 <!-- Full Page Search -->
-<div id="full-page-search">
-    <button type="button" class="close">×</button>
-    <form action="https://storage.googleapis.com/theme-vessel/carhouse/index.html#" class="search-header">
-        <input type="search" value="" placeholder="palabras clave aquí. Por ejemplo: audi, benz, etc." />
-        <button type="submit" class="btn btn-sm button-theme">Buscar</button>
-    </form>
-</div>
+
 
 <!-- Car Overview Modal -->
 <div class="car-model-2">
