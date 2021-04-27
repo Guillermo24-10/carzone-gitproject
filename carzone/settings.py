@@ -17,11 +17,16 @@ DEBUG = True ## Debug = False, para que sus usuarios no puedan ver el error téc
 ALLOWED_HOSTS = []
 
 
+LOGIN_REDIRECT_URL = 'dashboard'
+
+
 # Application definition
 
 INSTALLED_APPS = [
     'carros.apps.CarrosConfig',
     'paginas.apps.PaginasConfig',
+    'accounts.apps.AccountsConfig',
+    'contacto.apps.ContactoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,6 +35,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'django.contrib.humanize',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #PROVEEDORES
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
 ]
 
 MIDDLEWARE = [
@@ -122,3 +136,22 @@ STATICFILES_DIRS = [
 ## MEDIA CONFIGURACION
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+# MESSAGES
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+
+}
+
+SITE_ID = 1
+
+
+#ENVIAR_EMAILS
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pgaugusto24@gmail.com'
+EMAIL_HOST_PASSWORD = 'Ev5tzx8e'
+EMAIL_USE_TLS = True
