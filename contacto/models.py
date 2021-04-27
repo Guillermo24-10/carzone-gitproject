@@ -13,7 +13,6 @@ class Contacto(models.Model):
     telefono = models.CharField(max_length=100)
     mensaje = models.TextField(blank=True)
     user_id = models.IntegerField(blank=True)
-    precio = models.IntegerField()
     fecha_creacion = models.DateTimeField(blank=True,default=datetime.now)
 
 
