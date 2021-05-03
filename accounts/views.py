@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from contacto.models import Contacto
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -63,6 +64,7 @@ def cerrar_sesion(request):
         return redirect('home')
     return render(request,'accounts/login.html')
 
+@login_required(login_url = 'login')
 def dashboard(request):
     user_consulta = Contacto.objects.order_by('-fecha_creacion').filter(user_id=request.user.id)
     data = {

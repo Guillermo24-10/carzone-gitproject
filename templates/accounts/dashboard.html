@@ -30,7 +30,6 @@
             <th scope="col">#</th>
             <th scope="col">Nombre del coche</th>
             <th scope="col">Localizacion</th>
-            <th scope="col">Precio</th>
             <th scope="col">Accion</th>
           </tr>
           </thead>
@@ -41,7 +40,6 @@
             <th scope="row">1</th>
             <td>{{d.car_tittle}}</td>
             <td>{{d.ciudad}}</td>
-            <td>${{d.precio}}</td>
             <td><a href="{% url 'car_detalle' d.car_id %}" class="btn btn-outline-dark">Ver coche</a></td>
           </tr>
 
